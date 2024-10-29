@@ -36,7 +36,7 @@
           {
             "name": "internal",
             "subnet_id": "${azurerm_subnet.example_subnet.id}",
-            "private_ip_address_allocation": "Dynamic"
+            "private_ip_address_allocation": "___FILL_ME_IN___"
           }
         ]
       }
@@ -52,11 +52,11 @@
         "network_interface_ids": ["${azurerm_network_interface.example_nic.id}"],
         "os_disk": {
           "caching": "ReadWrite",
-          "storage_account_type": "Standard_LRS"
+          "storage_account_type": "___FILL_ME_IN___"
         },
         "source_image_reference": {
           "publisher": "Canonical",
-          "offer": "UbuntuServer",
+          "offer": "___FILL_ME_IN___",
           "sku": "18.04-LTS",
           "version": "latest"
         }
