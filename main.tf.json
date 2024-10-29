@@ -1,0 +1,52 @@
+{
+  "provider": {
+    "aws": {
+      "region": "us-west-2"
+    }
+  },
+  "resource": {
+    "aws_instance": {
+      "example": {
+        "ami": "${var.ami_id}",
+        "instance_type": "___FILL_ME_IN___",
+        "tags": {
+          "Name": "MyInstance"
+        },
+        "network_interface": {
+          "device_index": 0,
+          "subnet_id": "${var.subnet_id}",
+          "associate_public_ip_address": true
+        },
+        "vpc_security_group_ids": ["${aws_security_group.example.id}"]
+      }
+    },
+    "aws_security_group": {
+      "example": {
+        "name": "example_security_group",
+        "description": "Allow SSH and HTTP traffic",
+        "ingress": [
+          {
+            "from_port": 22,
+            "to_port": 22,
+            "protocol": "tcp",
+            "cidr_blocks": ["0.0.0.0/0"]
+          },
+          {
+            "from_port": 80,
+            "to_port": 80,
+            "protocol": "tcp",
+            "cidr_blocks": ["0.0.0.0/0"]
+          }
+        ],
+        "egress": [
+          {
+            "from_port": 0,
+            "to_port": 0,
+            "protocol": "-1",
+            "cidr_blocks": ["0.0.0.0/0"]
+          }
+        ]
+      }
+    }
+  }
+}
